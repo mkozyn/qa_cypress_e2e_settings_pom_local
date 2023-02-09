@@ -11,43 +11,20 @@
 
 This is an implementation of https://github.com/gothinkster/realworld
 
-Got it running on Heroku as of April 2021 at https://cirosantilli-realworld-next.herokuapp.com/[]. On August 2022, heroku announced the end of free tiers as of November 28, 2022: https://blog.heroku.com/next-chapter[], so it might go down, I don't think I'll pay 10 dollars/month to keep it going. Here's an archive: https://web.archive.org/web/20220826111459/https://cirosantilli-realworld-next.herokuapp.com/[]. More discussion at:
-
-* https://github.com/cirosantilli/node-express-sequelize-nextjs-realworld-example-app/issues/23
-* https://github.com/gothinkster/realworld/discussions/974
-
 This implementaion includes <<database-migrations>>, <<test-js,DB and API unit testing>>, <<generate-demo-data,DB seeding>>, and <<linting>> setups.
 
 This is a branch of https://github.com/cirosantilli/node-express-sequelize-realworld-example-app rebased on top of the `master` branch of that repository, we show it in a separate GitHub repository just to give it more visibility.
 
-Ideally we would like to have both demos on the same tree as they share all backend code, but Next.js and NPM impose too many restrictions which we don't have the time to work around.
-
-The frontend part of this repository is a fork of https://github.com/reck1ess/next-realworld-example-app/tree/66003772a42bf71c7b2771119121d4c9cf4b07d4 which was SSR-only via API, not pure SSR/SSG/ISG.
-
-We decided to merge the frontend it in-tree with the API rather than keep it a separate submodule because the fullstack implementation means that the barrier between front-end and back-end becomes is quite blurred, e.g. "front-end" files under `/pages` also contain functions with direct backend database access without going through the API.
-
-Both Next.js and the backend API run on the same Express.js server via a https://nextjs.org/docs/advanced-features/custom-server[Next.js custom server], which is basically what you always want for a sane deployment.
-
-The app is by default ISR. We started doing a bit of SSR as well under <<SSR version>> but didn't to very far. Ideally, we would want to implement both for every page, and then benchmark them.
-
-In ISR, user-specific information such as "do I follow this article or not" is fetched by the client after it receives the user-agnostic statically generated page. The client then patches that page with this new user-specific information. This is what you would want do on a real world app, so that things that are common to all users can be cached across all users, and user-specifics are patced on later via a potentially slower API call. See also: <<what-works-with-javascript-turned-off>>.
-
-The design goals of this repository are similar to https://dev.to/givehug/next-js-apollo-client-and-server-on-a-single-express-app-55l6 except that we are trying to implement the Realworld App :-) GraphQL would be ideal, but its need is greatly diminished by SSR, which essentially leads to a manual ad-hoc implementation of GraphQL for each page.
-
-This repository is a baseline for the more realworld/advanced/specialized:
-
-* https://github.com/cirosantilli/ourbigbook/tree/master/web
-* https://ourbigbook.com
-* https://cirosantilli.com/ourbigbook-com
-
-We are trying to port back any problems that are noticed in that repository here, but sometimes we got lazy, and that repo has been getting more code cleanups in general. Also, some features will only be present there because of our constraint of not diverging from the Realworld spec here. Notably that repository contains:
-
-* signup email verification: https://docs.ourbigbook.com/#ourbigbook-web-email-sending
-* reCAPTCHA signup protection: https://docs.ourbigbook.com/#ourbigbook-web-recaptcha-setup
-
-toc::[]
-
 == Local development with SQLite
+
+Install Sequelize:
+
+....
+npm install -g sequelize-cli
+npm install -g sequelize
+....
+
+Run the app:
 
 ....
 npm install
