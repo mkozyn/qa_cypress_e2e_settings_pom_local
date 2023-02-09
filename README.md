@@ -1,4 +1,4 @@
-# ![Drash Example App](logo.png)
+# Cypress practice
 
 ## Workflow
 
