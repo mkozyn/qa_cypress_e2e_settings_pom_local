@@ -52,9 +52,12 @@
     "react-dom": "17.0.2",
     "request": "2.69.0",
     "sequelize": "6.5.1",
+    "sequelize-cli": "^6.4.1",
     "slug": "0.9.1",
     "swr": "0.3.0",
-    "termit": "0.4.4"
+    "termit": "0.4.4",
+    "cypress-image-snapshot": "^4.0.1",
+    "faker": "^5.5.3"
   },
   "devDependencies": {
     "@fontsource/source-sans-pro": "4.5.0",
