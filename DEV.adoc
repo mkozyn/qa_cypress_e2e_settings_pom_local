@@ -17,13 +17,6 @@ This is a branch of https://github.com/cirosantilli/node-express-sequelize-realw
 
 == Local development with SQLite
 
-Install Sequelize:
-
-....
-npm install -g sequelize-cli
-npm install -g sequelize
-....
-
 Run the app:
 
 ....
