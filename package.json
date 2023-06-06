@@ -60,6 +60,9 @@
     "faker": "^5.5.3"
   },
   "devDependencies": {
+    "cypress": "^12.13.0",
+    "@types/cypress": "latest",
+    "@typescript-eslint/eslint-plugin": "^5.52.0",
     "@fontsource/source-sans-pro": "4.5.0",
     "@fontsource/source-serif-pro": "4.5.0",
     "@fontsource/titillium-web": "4.5.0",
