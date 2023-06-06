@@ -1,4 +1,4 @@
-# Cypress practice
+# Cypress: Settings
 
 ## Workflow
 
@@ -15,31 +15,19 @@
 
 Go to `e2e` folder and cover listed functionality with e2e tests:
 
-- creating an article;
-- editings an article;
-- deleting an article;
-- sign in (positive);
-- sign in (invalid credentials);
-- sign up (positive);
-- sign up (negative);
-- following/unfollowing the user;
 - updating bio;
 - updating username;
 - updating email;
 - updating password.
 
-### Basics level
+### Requirements
 
 1. Clear all data from the database before the test.
 1. Add `data-cy` attributes for all elements you are working with in tests.
 1. Use faker and custom methods to generate a fake data in tests.
-
-### Advanced level
-
-Use PageObject pattern for your tests:
-
-1. Create a files with POM classes for your pages in `cypress`/`support`/`pages`.
-1. Use `PageObject.js` file for the common for the whole app elements.
+1. Use PageObject pattern for your tests:
+   - create a files with POM classes for your pages in `cypress`/`support`/`pages`.
+   - use `PageObject.js` file for the common for the whole app elements.
 
 Observe an example in `cypress`/`e2e`/`signIn.cy.js`.  
 Find and additinoanl about Page Object in the [Cypress](https://mate.academy/learn/javascript-testing/cypress#/theory) topic.
