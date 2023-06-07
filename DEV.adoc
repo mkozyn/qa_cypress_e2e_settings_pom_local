@@ -115,51 +115,6 @@ If you need to inspect the database manually you can use:
 psql realworld_next
 ....
 
-== Heroku deployment
-
-The setup is analogous to: https://github.com/cirosantilli/node-express-sequelize-realworld-example-app#heroku-deployment but instead of `heroku git:remote -a cirosantilli-realworld-express` you should use:
-
-....
-git remote add heroku-next https://git.heroku.com/cirosantilli-realworld-next.git
-./heroku.sh addons:create --app cirosantilli-realworld-next heroku-postgresql:hobby-dev
-./heroku.sh config:set --app cirosantilli-realworld-next SECRET="$(tr -dc A-Za-z0-9 </dev/urandom | head -c 256)"
-# Optional. If set, enables demo mode. We must use the NEXT_PUBLIC_* prefix for the variable name,
-# otherwise it is not visible in the page renders.
-./heroku.sh config:set --app cirosantilli-realworld-next NEXT_PUBLIC_DEMO=true
-....
-
-This is done because this repository is normally developed as a branch of that one, which would lead to a conflicting name for the branch `heroku`.
-
-Additionally, before deploying, you must also make sure that you can run the PostgreSQL tests by setting PG up as shown at: <<local-run-as-identical-to-deployment-as-possible>>. This is because before deployment we always run the tests to ensure that nothing broke. And running the tests in PostgreSQL is particularly crucial, because since Sequelize is not stellar, sometimes things work in SQLite but fail in PostgreSQL.
-
-Then, to deploy the latest commit run:
-
-....
-npm run deploy
-....
-
-This also pushes the code to GitHub on success, and markes the deployed commit with the `deploy` branch on GitHub, to mark clearly the deployed commit clearly in case local development moves ahead of the deployed commit a bit.
-
-You then have to add `--app cirosantilli-realworld-next` to any raw `heroku` commands to allow Heroku to differentiate between them, e.g.:
-
-....
-./heroku.sh run --app cirosantilli-realworld-next bash
-....
-
-for which we have the helper:
-
-....
-./heroku.sh run bash
-....
-
-e.g. to delete, recreate and reseed the database:
-
-....
-./heroku.sh run bin/generate-demo-data.js --force-production
-....
-
-We are not sure if Next.js ISR can be deployed reliably due to the ephemeral filesystem such as those in Heroku...: https://stackoverflow.com/questions/67684780/how-to-set-where-the-prerendered-html-of-new-pages-generated-at-runtime-is-store but it has worked so far.
-
 === `devDependencies` vs `dependencies`
 
 Note that any dependencies required only for the build e.g. typescript are put under `devDependencies`.
