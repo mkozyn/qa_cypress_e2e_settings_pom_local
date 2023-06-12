@@ -8,7 +8,11 @@
 1. Create a new branch `git checkout -b e2e_testing`.
 1. Run the [app](./DEV.adoc) (Local development with SQLite).
 1. Resolve tasks.
+1. Record a video of your running your tests (you can use Loom).
 1. Create a pull request.
+   - note, you have to make a PR to this branch:
+    ![branch](./public/branch.png)
+1. Attach a link to your video to the PR description.
 1. Do not forget to click on `Re-request review` if you submit the homework after previous review.
 
 ## Task
