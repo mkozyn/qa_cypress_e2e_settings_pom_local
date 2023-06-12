@@ -1,11 +1,11 @@
 import PageObject from '../PageObject';
 
-class homePageObject extends PageObject {
+class HomePageObject extends PageObject {
   url = '/#/';
 
   get usernameLink() {
-    return cy.getByDataCy('/profile/');
+    return cy.getByDataCy('profile-link');
   }
 }
 
-export default homePageObject;
+export default HomePageObject;
