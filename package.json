@@ -4,6 +4,7 @@
   "description": "conduit on node",
   "main": "app.js",
   "scripts": {
+    "prepare": "husky install",
     "back-test": "NODE_ENV=test npm run dev",
     "build": "./bin/sync-db.js && next build",
     "build-dev": "./bin/sync-db.js && NEXT_PUBLIC_NODE_ENV=development npm run build",
@@ -76,6 +77,8 @@
     "eslint-config-next": "12.0.7",
     "eslint-config-prettier": "7.2.0",
     "eslint-plugin-prettier": "4.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
     "mocha": "6.2.2",
     "newman": "5.2.3",
     "nodemon": "1.11.0",
@@ -84,6 +87,14 @@
     "sequelize-cli": "6.2.0",
     "sqlite3": "5.0.2",
     "typescript": "4.5.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": "eslint --max-warnings=0"
   },
   "engines": {
     "node": "14.17.0",
