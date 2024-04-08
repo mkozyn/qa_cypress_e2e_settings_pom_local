@@ -43,7 +43,7 @@
     "express": "4.13.4",
     "express-jwt": "3.3.0",
     "express-session": "1.13.0",
-    "faker": "^5.5.3",
+    "@faker-js/faker": "^8.4.1",
     "ionicons": "2.0.1",
     "jsonwebtoken": "7.1.9",
     "marked": "1.1.1",
@@ -63,6 +63,7 @@
     "termit": "0.4.4"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@fontsource/source-sans-pro": "4.5.0",
     "@fontsource/source-serif-pro": "4.5.0",
     "@fontsource/titillium-web": "4.5.0",
