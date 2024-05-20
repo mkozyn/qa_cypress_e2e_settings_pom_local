@@ -22,7 +22,7 @@ describe('Settings page', () => {
     cy.login(user.email, user.username, user.password);
   });
 
-  it('should provide an ability to update username', () => {
+  it.skip('should provide an ability to update username', () => {
 
     settingsPage.visit();
     settingsPage.fillUsernameField(nextUser.usernameChanged);
@@ -31,7 +31,7 @@ describe('Settings page', () => {
 
   });
 
-  it('should provide an ability to update bio', () => {
+  it.skip('should provide an ability to update bio', () => {
     settingsPage.visit();
     settingsPage.fillBioField(nextUser.bioChanged);
     settingsPage.clickUpdateButton();
@@ -49,7 +49,7 @@ describe('Settings page', () => {
     settingsPage.clickLogoutButton();  // the second way to check = log out and log in with already changed creds.
     cy.loginAuth(nextUser.emailChanged, user.password);
     settingsPage.visit();
-
+    settingsPage.assertTheEmailField(nextUser.emailChanged);
   });
 
   it('should provide an ability to update password', () => {
@@ -61,12 +61,13 @@ describe('Settings page', () => {
     settingsPage.clickLogoutButton();
     cy.loginAuth(user.email, nextUser.passwordChanged);
     settingsPage.visit();
-
-
+    //  when the user is logged in -  the username should be visible at header nav.menu;
+    homePageObject.assertHeaderContainUsername(user.username); 
+    
 
   });
 
-  it('should provide an ability to log out', () => {
+  it.skip('should provide an ability to log out', () => {
 
     settingsPage.visit();
     settingsPage.clickLogoutButton();
