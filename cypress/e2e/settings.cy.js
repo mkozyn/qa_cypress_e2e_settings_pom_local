@@ -11,8 +11,8 @@ describe('Settings page', () => {
   before(() => {
     cy.task('generateUser').then((generateUser)=>{
       user = generateUser;
-    });
-    cy.task('generateUpdateData').then((generateUpdateData)=>{
+      return cy.task('generateUpdateData');
+    }).then((generateUpdateData)=>{
       nextUser = generateUpdateData;
     });
   });
